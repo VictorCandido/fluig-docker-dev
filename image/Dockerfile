@@ -24,6 +24,9 @@ ENTRYPOINT ["start-container"]
 
 WORKDIR /var/fluig/installer
 
+# Adicionando permissão de execução para o Java
+RUN chmod +x ./jdk-64/bin/java
+
 RUN ./jdk-64/bin/java -cp fluig-installer.jar com.fluig.install.ExecuteInstall /var/fluig/install.conf
 
 RUN mv /var/fluig/domain.xml /var/fluig/host.xml /opt/fluig/appserver/domain/configuration/
